@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { searchGithub, searchGithubUser } from '../api/API';
+import { searchGithub, searchGithubUser } from '../../../server/api/API';
 import placeholderImage from '../assets/placeholder.png';
 import Candidate from '../interfaces/Candidate';
 import { FaPlus, FaMinus } from 'react-icons/fa';

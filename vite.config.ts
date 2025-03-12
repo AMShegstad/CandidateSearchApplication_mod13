@@ -9,6 +9,7 @@ export default defineConfig({
   envDir: './env',
   plugins: [react()],
   server: {
-    port: 3000,
+    port: 3002,
   }
 });
+0 

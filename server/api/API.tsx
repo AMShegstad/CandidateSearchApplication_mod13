@@ -1,5 +1,5 @@
 
-import Candidate from '../interfaces/Candidate';
+import Candidate from '../../client/src/interfaces/Candidate';
 
 const searchGithub = async () => {
   try {
