@@ -43,12 +43,12 @@ const searchGithubUser = async (username: string): Promise<Candidate> => {
     if (!import.meta.env.VITE_GITHUB_TOKEN) {
       throw new Error('GitHub token is not defined');
     }
-    const response = await fetch(`https://api.github.com/users/${username}`, {
+    const response = await fetch(`https://api.github.com/users/${username}`/*, {
       headers: {
         //Authorization: `Bearer ${process.env.VITE_GITHUB_TOKEN}`,
         Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
       },
-    });
+    }*/);
     const data = await response.json();
     if (!response.ok) {
       throw new Error('invalid API response, check the network tab');
