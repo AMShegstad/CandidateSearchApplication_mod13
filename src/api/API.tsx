@@ -1,5 +1,4 @@
-//import dotenv from 'dotenv';
-//dotenv.config();
+
 import Candidate from '../interfaces/Candidate';
 
 const searchGithub = async () => {
