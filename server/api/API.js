@@ -12,13 +12,13 @@ const searchGithub = async () => {
     }
 
     const response = await fetch(
-      `https://api.github.com/users?since=${start}`,
+      `https://api.github.com/users?since=${start}`/*,
       {
         headers: {
           Authorization: `Bearer ${process.env.VITE_GITHUB_TOKEN}`,
         },
       }
-    );
+    */);
 
     if (!response.ok) {
       throw new Error("Invalid API response, check the network tab");
