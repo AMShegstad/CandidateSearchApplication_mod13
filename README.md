@@ -32,3 +32,8 @@ The CandidateSearchApplication_mod13 is designed to help users efficiently searc
     ```
 
 5. Follow the instructions for use to set up and run the application.
+
+## Links
+
+- [Live Application](https://candidatesearchapplication-mod13-071a.onrender.com/)  
+- [GitHub Repository](https://github.com/AMShegstad/CandidateSearchApplication_mod13)
