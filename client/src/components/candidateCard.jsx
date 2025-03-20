@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { searchGithub, searchGithubUser } from '../../../server/api/API';
-import placeholderImage from '../assets/placeholder.png';
-import Candidate from '../interfaces/Candidate';
+import axios from 'axios';
+//import Candidate from '../interfaces/Candidate';
 import { FaPlus, FaMinus } from 'react-icons/fa';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure this path is correct
 import { v4 as uuidv4 } from 'uuid';
+//import { Placeholder } from 'react-bootstrap';
 
-const CandidateCard: React.FC = () => {
-    const [user, setUser] = useState<Candidate | null>(null);
+const CandidateCard = () => {
+    const [user, setUser] = useState(null);
 
     const rerunSearch = async () => {
-        const usernames = await searchGithub();
-        if (usernames.length > 0) {
-            const result = await searchGithubUser(usernames[0]);
-            setUser(result);
+        try {
+            const response = await axios.get('/api/searchGithub');
+            const usernames = response.data;
+            if (usernames.length > 0) {
+                const userResponse = await axios.get(`/api/searchGithubUser/${usernames[0]}`);
+                setUser(userResponse.data);
+            }
+        } catch (error) {
+            console.error('Error fetching data', error);
         }
     };
 
@@ -29,10 +34,16 @@ const CandidateCard: React.FC = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const usernames = await searchGithub();
-            if (usernames.length > 0) {
-                const result = await searchGithubUser(usernames[0]);
-                setUser(result);
+            try {
+                const response = await axios.get('/api/searchGithub');
+                const usernames = response.data;
+                console.log(response.data);
+                if (usernames.length > 0) {
+                    const userResponse = await axios.get(`/api/searchGithubUser/${usernames[0]}`);
+                    setUser(userResponse.data);
+                }
+            } catch (error) {
+                console.error('Error fetching data', error);
             }
         };
 
@@ -42,6 +53,8 @@ const CandidateCard: React.FC = () => {
     if (!user) {
         return <div>Loading...</div>;
     }
+
+    const placeholderImage = "../assets/placeholder.png"
 
     return (
         <div className="container mt-4">

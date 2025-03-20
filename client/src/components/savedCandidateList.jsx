@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-interface Candidate {
-    id: string;
-    avatar: string;
-    name: string;
-    location: string;
-    company: string;
-    email: string;
-}
+// interface Candidate {
+//     id: string;
+//     avatar: string;
+//     name: string;
+//     location: string;
+//     company: string;
+//     email: string;
+// }
 
-const SavedCandidateList: React.FC = () => {
-    const [candidates, setCandidates] = useState<Candidate[]>([]);
+const SavedCandidateList = () => {
+    const [candidates, setCandidates] = useState([]);
 
     useEffect(() => {
         const savedCandidates = localStorage.getItem('savedCandidates');
@@ -20,7 +20,7 @@ const SavedCandidateList: React.FC = () => {
         }
     }, []);
 
-    const removeCandidate = (id: string) => {
+    const removeCandidate = (id) => {
         const updatedCandidates = candidates.filter(candidate => candidate.id !== id);
         setCandidates(updatedCandidates);
         localStorage.setItem('savedCandidates', JSON.stringify(updatedCandidates));
